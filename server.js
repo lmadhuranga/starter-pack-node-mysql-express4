@@ -13,7 +13,7 @@ const mc = mysql.createConnection({
     host: 'localhost',
     user: 'root',
     password: '',
-    database: 'laravel_movie_manager'
+    database: 'movie_manager'
 });
 
 // connect to database
