@@ -3,12 +3,13 @@ const app = express();
 const cors = require('cors')
 const mysql = require('mysql');
 const bodyParser = require('body-parser');
+const path    = require("path");
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
     extended: true
 }));
- 
+
 const mc = mysql.createConnection({
     host: 'localhost',
     user: 'root',
@@ -18,9 +19,13 @@ const mc = mysql.createConnection({
 
 // connect to database
 mc.connect();
- 
+
 // Enable All CORS Requests
 app.use(cors())
+
+app.get('/',(req, res)=>{
+    res.sendFile(path.join(__dirname+'/index.html')); 
+});
 
 // Get all 
 app.get('/qualities', function (req, res) {
@@ -40,7 +45,7 @@ app.get('/movies', function (req, res) {
 
 // Get details
 app.get('/movie/:id', function (req, res) {
-        
+    
     let movieId = req.params.id;
     
     if (!movieId) {
@@ -54,7 +59,7 @@ app.get('/movie/:id', function (req, res) {
         return res.send({});
     }); 
 });
-  
+
 // udpate
 app.put('/movie/:id', function (req, res) {
     let movie = req.body;
