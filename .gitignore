@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 ### OSX ###
 *.DS_Store
 .AppleDouble
@@ -76,3 +77,12 @@ jspm_packages
 
 # Nuxt generate
 dist
+=======
+/node_modules
+/.idea
+/.vscode
+/nbproject
+/.vagrant
+.env
+.phpunit.result.cache
+>>>>>>> Stashed changes
